@@ -39,7 +39,7 @@ type PointWithRoute struct {
 // Type constraints for element in SES
 type Elem interface {
 	// int32 overlaps rune
-	~rune | ~string | ~byte | ~int | ~int8 | ~int16 | ~int64 | ~float32 | ~float64
+	~rune | ~string | ~byte | ~uint32 | ~int | ~int8 | ~int16 | ~int64 | ~float32 | ~float64
 }
 
 // SesElem is element of SES
@@ -242,7 +242,6 @@ func (diff *Diff[T]) recordSeq(epc []Point) bool {
 					diff.ses = append(diff.ses, SesElem[T]{e: diff.a[px], t: SesAdd, aIdx: 0, bIdx: x + diff.ox})
 				} else {
 					diff.ses = append(diff.ses, SesElem[T]{e: diff.a[px], t: SesDelete, aIdx: x + diff.ox, bIdx: 0})
-
 				}
 				x++
 				px++
